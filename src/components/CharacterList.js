@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Character from "./Character";
 
 const CharacterList = props => {
+  if(!props.characters){return <h1>Loading</h1>}
   return (
     <ul>
       {props.characters.map(character => {
@@ -13,14 +14,4 @@ const CharacterList = props => {
 };
 
 
-const mstp = state => {
-  return {
-    characters: state.characters,
-  
-  }
-}
-
-export default connect(
- (mstp)
-)(CharacterList);
-
+export default CharacterList;

@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 
 import combineReducer from "./reducers";
 import rootReducer from "./reducers";
+import Reducer from "./reducers";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
@@ -20,7 +21,7 @@ import logger from "redux-logger";
 //rootReducer needs to be renamed?
 
 const store = createStore(
-combineReducer,
+rootReducer,
   applyMiddleware(thunk, logger)
 );
 

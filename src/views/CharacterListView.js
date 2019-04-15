@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { CharacterList } from "../components";
 // import actions
-import {fetchChar} from "../actions";
+import {fetchChar} from "../actions/index";
 
 class CharacterListView extends React.Component {
   constructor() {
@@ -12,16 +12,18 @@ class CharacterListView extends React.Component {
 
   componentDidMount() {
     //call our action
-    this.props.distpatch(fetchChar())
+    this.props.fetchChar();
   }
 
   render() {
+    console.log(this.props);
     if (this.props.loading) {
       // return something here to indicate that you are fetching data
       <h2>Fetching Data...</h2>
     }
     return (
       <div className="CharactersList_wrapper">
+      {console.log(typeof this.props.characters)}
         <CharacterList characters={this.props.characters} />
       </div>
     );
@@ -33,8 +35,8 @@ class CharacterListView extends React.Component {
 
 const mstp = state => {
   return {
-    characters: state.characters,
-    loading: state.loading
+    characters: state.charsReducer.characters,
+    loading: state.charsReducer.loading
   }
 }
 
