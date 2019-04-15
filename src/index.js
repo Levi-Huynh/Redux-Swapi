@@ -3,17 +3,25 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+
+import combineReducer from "./reducers";
 import rootReducer from "./reducers";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+
+
 // needed dependancies
-// applyMiddleware from redux
-// thunk from redux-thunk
-// logger from redux-logger
-// rootReducer from ./reducers
+// applyMiddleware from redux X
+// thunk from redux-thunk X
+// logger from redux-logger X
+// rootReducer from ./reducers X
+
+//rootReducer needs to be renamed?
 
 const store = createStore(
-  rootReducer
-  /* applyMiddleware goes here */
+combineReducer,
+  applyMiddleware(thunk, logger)
 );
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { connect } from "react-redux";
 import Character from "./Character";
 
 const CharacterList = props => {
@@ -12,4 +12,15 @@ const CharacterList = props => {
   );
 };
 
-export default CharacterList;
+
+const mstp = state => {
+  return {
+    characters: state.characters,
+  
+  }
+}
+
+export default connect(
+ (mstp)
+)(CharacterList);
+
